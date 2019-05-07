@@ -11,6 +11,11 @@ public class City {
         this.y = y;
     }
 
+    public String getName() {
+        return name;
+    }
+
+
     /**
      * 计算城市之间的距离
      * @param city 另一个城市

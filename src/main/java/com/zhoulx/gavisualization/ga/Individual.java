@@ -1,5 +1,8 @@
 package com.zhoulx.gavisualization.ga;
 
+import com.zhoulx.gavisualization.service.DataHolder;
+
+
 public class Individual {
 	private int[] chromosome;
 	private double fitness = -1;
@@ -22,8 +25,8 @@ public class Individual {
 
 		// 交换起始城市和 0 的位置
 		int temp = individual[0];
-		individual[0] = individual[Constant.START];
-		individual[Constant.START] = temp;
+		individual[0] = individual[DataHolder.START];
+		individual[DataHolder.START] = temp;
 
 		this.chromosome = individual;
 	}

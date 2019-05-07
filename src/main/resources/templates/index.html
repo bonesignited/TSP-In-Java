@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<p>请选择要经过的城市，然后按确定键</p>
+
+<div id="checkboxes">
+    <label th:each="city, cityIndex:${cities}" th:for="${city.name}">
+        <input th:id="${city.name}" type="checkbox" name="city" th:value="${city.name}">
+        <span th:text="${city.name}"></span>
+    </label>
+</div>
+<label for="start">起始城市：</label><input type="text" id="start">
+<button id="submit-cities" th:type="submit" th:value="确定">确定</button>
+
+<div id="main" style="width: 800px;height:600px;"></div>
+<script type="text/javascript" th:src="@{js/echarts.js}"></script>
+<script type="text/javascript" th:src="@{js/jquery-3.3.1.js}"></script>
+<script type="text/javascript" th:src="@{js/city.js}"></script>
+<script th:inline="javascript">
+
+    $(document).ready(function () {
+        $("#submit-cities").click(function () {
+            $.ajax({
+                type: "POST",
+                url: "/schemas/" + $("#start").val(),
+                data: getChecked(),
+                success: function (data, status) {
+                    draw(data);
+                },
+                contentType: "application/json",
+                dataType: "json"
+            })
+        })
+    });
+
+    function getChecked() {
+        var cities = [];
+        $("input[name='city']:checked").each(function () {
+            var city = $(this).val();
+            cities.push(city);
+        });
+        console.log(cities);
+        return JSON.stringify(cities);
+    }
+
+    function draw(lines) {
+        var myChart = echarts.init(document.getElementById('main'));
+
+        console.log(lines);
+
+        var fixedLineStyle = {
+            type: 'solid',
+            color: "blue"
+        };
+
+        var linesOpt = [];
+
+        lines.forEach(function (item) {
+             var start = {
+                 coord: [item.x_start, item.y_start]
+             };
+             var end = {
+                 coord: [item.x_end, item.y_end]
+             };
+
+             var other = {
+                 label: {
+                     show: true,
+                     position: 'middle',
+                     formatter: String(item.index)
+                 },
+                 lineStyle: fixedLineStyle
+             };
+
+             var singleLineArray = [start, end, other];
+             linesOpt.push(singleLineArray);
+        });
+
+        var markLineOpt = {
+            animation: true,
+
+            data: linesOpt
+        };
+
+
+        var option = {
+            title: {
+                test: 'test'
+            },
+            xAxis: {
+                position: 'bottom',
+                min: 85,
+                max: 130
+            },
+            yAxis: {
+                position: 'left',
+                min: 15,
+                max: 50
+            },
+
+            series: [{
+                name: 'a',
+                type: 'scatter',
+                markLine: markLineOpt,
+                data: dataAll,
+                itemStyle: {
+                    normal: {
+                        label: {
+                            show: true,
+                            position: 'top',
+                            formatter: function (param) {
+                                return param.data[2];
+                            },
+                            color: 'black'
+                        }
+                    }
+                }
+            }]
+        };
+
+        myChart.setOption(option);
+    }
+
+
+</script>
+</body>
+</html>
