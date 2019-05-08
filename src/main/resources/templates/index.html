@@ -48,9 +48,10 @@
         return JSON.stringify(cities);
     }
 
-    function draw(lines) {
+    function draw(data) {
         var myChart = echarts.init(document.getElementById('main'));
 
+        var lines = data.routeLines;
         console.log(lines);
 
         var fixedLineStyle = {

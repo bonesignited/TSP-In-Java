@@ -23,10 +23,10 @@ public class Individual {
 			individual[gene] = gene;
 		}
 
-		// 交换起始城市和 0 的位置
-		int temp = individual[0];
-		individual[0] = individual[DataHolder.START];
-		individual[DataHolder.START] = temp;
+//		// 交换起始城市和 0 的位置
+//		int temp = individual[0];
+//		individual[0] = individual[DataHolder.START];
+//		individual[DataHolder.START] = temp;
 
 		this.chromosome = individual;
 	}

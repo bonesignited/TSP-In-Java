@@ -1,4 +1,4 @@
-package com.zhoulx.gavisualization.ga;
+package com.zhoulx.gavisualization.service;
 
 
 public class RouteLine {
