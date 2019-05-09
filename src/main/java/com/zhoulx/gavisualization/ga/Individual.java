@@ -1,6 +1,5 @@
 package com.zhoulx.gavisualization.ga;
 
-import com.zhoulx.gavisualization.service.DataHolder;
 
 
 public class Individual {
@@ -22,11 +21,6 @@ public class Individual {
 		for (int gene = 0; gene < chromosomeLength; gene++) {
 			individual[gene] = gene;
 		}
-
-//		// 交换起始城市和 0 的位置
-//		int temp = individual[0];
-//		individual[0] = individual[DataHolder.START];
-//		individual[DataHolder.START] = temp;
 
 		this.chromosome = individual;
 	}

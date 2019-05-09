@@ -30,8 +30,14 @@ public class RouteUtil {
             City next = cities[(i + 1) % length];
             lines.add(new RouteLine(city.getX(), city.getY(), next.getX(), next.getY(), i - start));
         }
-        lines.add(new RouteLine(cities[start - 1].getX(), cities[start - 1].getY(),
-                cities[start].getX(), cities[start].getY(), length - 1));
+
+        if (start == 0) {
+            lines.add(new RouteLine(cities[length - 1].getX(), cities[length - 1].getY(),
+                    cities[0].getX(), cities[0].getY(), length - 1));
+        } else {
+            lines.add(new RouteLine(cities[start - 1].getX(), cities[start - 1].getY(),
+                    cities[start].getX(), cities[start].getY(), length - 1));
+        }
 
         double distance = route.getDistance();
 

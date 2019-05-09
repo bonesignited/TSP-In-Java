@@ -28,9 +28,9 @@ public class TSPController {
 
 
     @ResponseBody
-    @PostMapping("/schemas/{start}")
-    public ResponseEntity getRouteWithoutParameters(@RequestBody List<String> cities, @PathVariable String start) throws IOException {
+    @PostMapping("/schemas/{start}/{schemasCount}")
+    public ResponseEntity getRouteWithoutParameters(@RequestBody List<String> cities, @PathVariable String start, @PathVariable String schemasCount) throws IOException {
 
-        return ResponseEntity.ok(tspService.process(cities, start));
+        return ResponseEntity.ok(tspService.process(cities, start, Integer.valueOf(schemasCount)));
     }
 }

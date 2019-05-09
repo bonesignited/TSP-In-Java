@@ -16,7 +16,7 @@ public class TSPService {
         return Arrays.asList(DataHolder.allCities);
     }
 
-    public Schema process(List<String> cities, String start) {
+    public List<Schema> process(List<String> cities, String start, Integer schemasCount) {
         List<City> ret = new ArrayList<>();
         for (String city : cities) {
             for (int i = 0; i < DataHolder.allCities.length; i++) {
@@ -33,8 +33,14 @@ public class TSPService {
         City[] cityArray = new City[cities.size()];
         ret.toArray(cityArray);
 
-        Route route =  TSP.run(cityArray);
+        List<Schema> schemaList = new ArrayList<>();
 
-        return RouteUtil.getSchema(route);
+        for (int i = 0; i < schemasCount; i++) {
+            Route route =  TSP.run(cityArray);
+            schemaList.add(RouteUtil.getSchema(route));
+        }
+
+
+        return schemaList;
     }
 }

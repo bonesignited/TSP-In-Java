@@ -7,7 +7,7 @@ public class TSP {
     public static Route run(City[] inputCities) {
 
         // 初始化算法
-        GeneticAlgorithm ga = new GeneticAlgorithm(POPULATION_SIZE, MUTATION_RATE, CROSSOVER_RATE, ELITISM_COUNT, TOURNAMENT_SIZE);
+        GeneticAlgorithm ga = new GeneticAlgorithm(POPULATION_SIZE, MUTATION_RATE, CROSSOVER_RATE, ELITISM_COUNT);
 
         // 初始化种群
         Population population = ga.initPopulation(inputCities.length);
