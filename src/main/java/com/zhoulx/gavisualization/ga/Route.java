@@ -1,5 +1,7 @@
 package com.zhoulx.gavisualization.ga;
 
+import java.util.Arrays;
+
 public class Route {
     private City[] route;
     private double distance = 0;
@@ -35,5 +37,17 @@ public class Route {
 
     public City[] getRoute() {
         return route;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Route{route=");
+        for (int i = 0; i < route.length; i++) {
+            sb.append(route[i].getName());
+            sb.append(" -> ");
+        }
+        sb.append(route[0].getName());
+        return sb.toString();
     }
 }

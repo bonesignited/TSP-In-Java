@@ -23,7 +23,7 @@ public class TSP {
         while (!ga.isTerminationConditionMet(generation, Constant.MAX_GENERATIONS)) {
             // 打印种群中适应度最高的个体
             Route route = new Route(population.getFittest(0), inputCities);
-            System.out.println("G" + generation + " Best distance: " + route.getDistance());
+            System.out.println("G" + generation + " " + route.toString() +" Best distance: " + route.getDistance());
 
             // 交叉
             population = ga.crossoverPopulation(population);
