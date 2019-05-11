@@ -1,8 +1,10 @@
 package com.zhoulx.gavisualization.service;
 
 
-import com.zhoulx.gavisualization.ga.*;
-import org.omg.PortableServer.AdapterActivator;
+import com.zhoulx.gavisualization.ga.City;
+import com.zhoulx.gavisualization.ga.Route;
+import com.zhoulx.gavisualization.ga.RouteUtil;
+import com.zhoulx.gavisualization.ga.TSP;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

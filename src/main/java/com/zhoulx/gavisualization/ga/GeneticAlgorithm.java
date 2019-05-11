@@ -75,7 +75,6 @@ public class GeneticAlgorithm {
 
         // 根据适应度遍历当代种群
         for (int populationIndex = 0; populationIndex < population.size(); populationIndex++) {
-            // Get parent1
             Individual parent1 = population.getFittest(populationIndex);
 
             // 对该个体进行交叉

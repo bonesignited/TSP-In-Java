@@ -1,7 +1,5 @@
 package com.zhoulx.gavisualization.ga;
 
-import java.util.Arrays;
-
 public class Route {
     private City[] route;
     private double distance = 0;

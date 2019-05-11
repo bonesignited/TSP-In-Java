@@ -12,7 +12,7 @@ public class Individual {
 	}
 
 	/**
-	 * 通过染色体长度创建个体，并设置起始城市
+	 * 通过染色体长度创建个体
 	 * @param chromosomeLength 染色体长度
 	 */
 	public Individual(int chromosomeLength) {

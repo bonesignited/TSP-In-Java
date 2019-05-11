@@ -16,15 +16,13 @@ public class Population {
 
 
     public Population(int populationSize, int chromosomeLength) {
-        // Initialize the population as an array of individuals
+        // 每个种群都是一个个体数组
         this.population = new Individual[populationSize];
 
-        // Create each individual in turn
+        // 初始化每个个体
         for (int individualCount = 0; individualCount < populationSize; individualCount++) {
-            // Create an individual, initializing its chromosome to the given
-            // length
+            // 以给定染色体长度初始化个体
             Individual individual = new Individual(chromosomeLength);
-            // Add individual to population
             this.population[individualCount] = individual;
         }
     }
@@ -36,7 +34,6 @@ public class Population {
 
 
     public Individual getFittest(int offset) {
-        // Order population by fitness
         Arrays.sort(this.population, new Comparator<Individual>() {
             @Override
             public int compare(Individual o1, Individual o2) {
@@ -49,7 +46,6 @@ public class Population {
             }
         });
 
-        // Return the fittest individual
         return this.population[offset];
     }
 
